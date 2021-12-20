@@ -12,10 +12,10 @@ Motorized tilt control for horizontal slat-style blinds over Wifi. There are qui
   - **Back-driveable**: Retain manual tilt control of your blinds with existing pull strings in case of power/internet outage.
   - **Keep the stock look**: No clunky or visible parts after installation with no-show profile installation.
   - **Built in control via ESP8266 web interface:** Android OTA updatable firmware, SSDP device discovery.
-  - **Low cost** About $20-$40 per installation (as of Dec'21, depending where you source the parts).
+  - **Low cost:** About $20-$50 per installation <sup>1</sup> 
   - **Optional manual control button**
 
-
+<sup>1</sup>*As of Dec'21, depending on where you source the parts and how many you build.*
 
 ## Assembly/Installation
 
