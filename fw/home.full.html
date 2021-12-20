@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mblinds</title>
+    <style>
+        body {
+			text-align:center;
+			font-family:verdana;
+            font-size: 1.5em;
+			background-color:black;
+			color:white;
+		}
+        button {
+			border:0;
+			border-radius:0.3em;
+			background-color:#1fa3ec;
+			color:#fff;
+			line-height:2.4em;
+			font-size:1.2em;
+			width:100%;
+			display:block;
+            margin-top: 15px;
+		}
+    </style>
+
+</head>
+<body>
+    <div style='text-align:left;display:inline-block;width:320px;padding:5px'>
+        <p id='id'>ID: </p>
+        <p id='st'>STATE: </p>
+            <button id='bo' onclick="go(this,'0')">&#x263C; Open</button>
+            <button id='bc' onclick="go(this,'1')">&#x2600; Close</button>
+    </div>
+
+    <script>
+        function g(i){return document.getElementById(i);};
+        function s(i,t) { g(i).innerHTML+=t;};
+        function go(o,i) {
+             d(o);
+             fetch('/motorgo?oren='+i);
+        };
+        function d(o)
+        {
+            o.disabled=true;
+            o.style.backgroundColor='#ccc';
+            setTimeout(function(){o.disabled=false; o.style.backgroundColor='#1fa3ec'; location.reload();},5000);
+        }
+        window.addEventListener('load', function() {
+            fetch('/motor')
+            .then((response) => {
+                return response.json();
+            }).then((data) => {
+                var id=data['id'];
+                document.title=id;
+                s('id', id);
+                var p=data['pos'];
+                var ps=p[0]=='u'||p[0]=='d'?'closed':'open';
+                s('st', ps);
+            });
+        })
+    </script>
+</body>
+</html>
