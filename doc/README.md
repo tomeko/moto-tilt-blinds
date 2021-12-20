@@ -1,3 +1,3 @@
 ## TODO
 
-updating soon
+installation guide coming soon
