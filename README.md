@@ -52,7 +52,7 @@ Parts #1-5 listed below are required. The rest (like hookup wire, etc) you may h
   <li>Standard hookup wire, 22-30awg</li>
   <li>2 conductor is a bit cleaner for running 5V power and button signal</li>
   <li>Only needed if manual button wanted</li>
-  <li>Insulated esp8266, motor driver from each other, they aren't mounted in this revision</li>
+  <li>Electrically insulates esp8266, motor driver in the controller case (they aren't mounted in this revision)</li>
   <li>Can use any USB wall plug or 5V adapter >500mA, just splice it</li>
 </ol>
 
