@@ -1,1 +1,3 @@
-{\rtf1}
+## Wiring
+
+![wiring](../doc/motoblinds-hookup.png)
