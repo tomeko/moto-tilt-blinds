@@ -22,7 +22,7 @@ Motorized tilt control for horizontal slat-style blinds over Wifi. There are qui
 
 *Note: This project requires drilling 3 holes into the metal blinds-housing to mount the controller/shaft-spool adapter. Though this won't be visible when be covered-up by the housing shroud. Just something to consider if you're renting/etc*
 
-Link to installation guide.
+Link to installation guide. [installation guide](https://github.com/tomeko/moto-tilt-blinds/tree/main/doc)
 
 ## BOM
 
