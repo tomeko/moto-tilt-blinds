@@ -9,7 +9,7 @@ Motorized tilt control for horizontal slat-style blinds over Wifi. There are qui
 </div>
 
 ### Features
-  - **Back-drivable**: Retain manual tilt control of your blinds with existing pull strings in case of power/internet outage.
+  - **Back-driveable**: Retain manual tilt control of your blinds with existing pull strings in case of power/internet outage.
   - **Keep the stock look**: No clunky or visible parts after installation with no-show profile installation.
   - **Built in control via ESP8266 web interface:** Android OTA updatable firmware, SSDP device discovery.
   - **Optional manual control button**
