@@ -24,7 +24,7 @@ Motorized tilt control for horizontal slat-style blinds over Wifi. There are qui
   - Familiarity with soldering, wiring, etc.
   - Arduino IDE for primary firmware flash
 
-*Note: This project requires drilling 3 holes into the metal blinds-housing to mount the controller/shaft-spool adapter. Though this won't be visible when be covered-up by the housing shroud. Just something to consider if you're renting/etc*
+*Note: This project requires drilling 3 holes into the metal blinds-housing to mount the controller/shaft-spool adapter, though this won't be visible when be covered-up by the housing shroud. Just something to consider if you're renting/etc*
 
 Link to installation guide. [installation guide](https://github.com/tomeko/moto-tilt-blinds/tree/main/doc)
 
