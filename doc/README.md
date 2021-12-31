@@ -127,3 +127,4 @@ The replacement spool/coupler is printed in 3 pieces, and needs to be superglued
 
  <p align="center"><img src="moto-tilt-blinds-assm-spoolglue2.png"><br>Fig 6.b:  Assembled/glued spool</p>
 
+## TODO: finish
