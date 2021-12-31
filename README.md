@@ -22,11 +22,11 @@ Motorized tilt control for horizontal slat-style blinds over Wifi. There are qui
 ### Primary Requirements
   - Access to a 3d printer. (I used an Ender3 Pro, all printed with PLA)
   - Familiarity with soldering, wiring, etc.
-  - Arduino IDE for primary firmware flash
+
 
 *Note: This project requires drilling 3 holes into the metal blinds-housing to mount the controller/shaft-spool adapter, though this won't be visible when be covered-up by the housing shroud. Just something to consider if you're renting/etc*
 
-[Link to installation guide](https://github.com/tomeko/moto-tilt-blinds/tree/main/doc)
+[Installation guide](https://github.com/tomeko/moto-tilt-blinds/tree/main/doc)
 
 ## TODO/Wishlist
   - MQTT: If you're currently in that ecosystem, it would be nice. However this of course requires an external MQTT server, etc. Rev1 is good to go without any server requirements.
