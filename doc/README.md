@@ -1,7 +1,7 @@
 ## 1. Horizontal Slat Blinds Overview
 
-![overview0](moto-blinds-overview0.png)
-<p style="text-align: center;">Fig 1.a:  Existing horizontal slat blinds overview (cords/strings not pictured)</p>
+
+<p align="center"><img src="moto-blinds-overview0.png"><br>Fig 1.a:  Existing horizontal slat blinds overview (cords/strings not pictured)</p>
 
  1.  Front cover shroud
      - Usually a decorative cover made of plastic attached using clips.
@@ -59,8 +59,7 @@ Parts #1-5 listed below are required. The rest (like hookup wire, etc) you may h
 
   All parts to 3d print are illustrated and described below, and the files are found in the `/stl` folder in this repo. I used an Ender3 Pro with a pretty stock/typical setup (0.4mm nozzle, 1.75mm PLA). 
 
-  ![3d printed parts](moto-tilt-blinds-3dprint_parts.png)
-<p style="text-align: center;">Fig 2.a:  3d printed parts</p>
+<p align="center"><img src="moto-tilt-blinds-3dprint_parts.png"><br>Fig 2.a:  3d printed parts</p>
 
   1. Spool (1/3) Motor shaft coupler side
   2. Spool (2/3) Side 1
@@ -80,9 +79,7 @@ Parts #1-5 listed below are required. The rest (like hookup wire, etc) you may h
 
   ## 4. Wiring
 
-
-  ![wiring](motoblinds-hookup.png)
-<p style="text-align: center;">Fig 4.a:  Wiring diagram</p>
+<p align="center"><img src="motoblinds-hookup.png"><br>Fig 4.a:  Wiring diagram</p>
 
 Notes:
   - Wiring between the ESP8266 and the motor driver should be short, as the ESP8266 and motor driver will be sandwiched on top of each other (insulated by thermal or electrical tape, BOM 2.10)
@@ -126,9 +123,7 @@ In `mblinds_fw.ino`, you need to update some main definitions/declarations, arou
 
 ### Spool
 The replacement spool/coupler is printed in 3 pieces, and needs to be superglued together.
-  ![wiring](moto-tilt-blinds-assm-spoolglue.png)
-<p style="text-align: center;">Fig 6.a:  Apply superglue to the green shaded areas and push pieces together </p>
+  <p align="center"><img src="moto-tilt-blinds-assm-spoolglue.png"><br>Fig 6.a:  Apply superglue to the green shaded areas and push pieces together</p>
 
-![wiring](moto-tilt-blinds-assm-spoolglue2.png)
-<p style="text-align: center;">Fig 6.b:  Assembled/glued spool </p>
+ <p align="center"><img src="moto-tilt-blinds-assm-spoolglue2.png"><br>Fig 6.b:  Assembled/glued spool</p>
 
