@@ -3,8 +3,6 @@
 ![overview0](moto-blinds-overview0.png)
 <p style="text-align: center;">Fig 1.a:  Existing horizontal slat blinds overview (cords/strings not pictured)</p>
 
-
-
  1.  Front cover shroud
      - Usually a decorative cover made of plastic attached using clips.
  2.  Metal housing
@@ -13,10 +11,10 @@
  4.  Tilt-gear mechanism
      - Contains a bevel-gear to translate rotation of spool (5) to rotation of the main drive shaft (3)
  5.  Cord spool
-     - Cord wrapped around this, attached to shaft of the tilt-gear mechanism (4)
+     - Cord wrapped around this, connected to shaft of the tilt-gear mechanism (4)
 
 
-### 1.1 `moto-tilt-blinds` design concept
+### `moto-tilt-blinds` design concept
 
   - One way to approach this would be a worm-gear motor driving the main drive shaft (1.a.3) directly, and removing the tilt-gear mechanism entirely. But that disables manual control as the worm-gear motor is not back-driveable.
   - A small geared motor is placed inline to rotate the cord spool (1.a.5)
@@ -94,7 +92,7 @@ Notes:
   
 ## 5. Firmware
 
-_NOTE: For the initial firmware flash, you might be able to get away with flashing before wiring everything up. But it's recommended to find/make a micro-usb cable with the power wire (red usually) cut for this. Also useful for  serial debugging. The D1-Mini ESP8266 might have circuitry to handle both external and USB power, but it's always good to be on the safe side._
+NOTE: For the initial firmware flash, you might be able to get away with flashing before wiring everything up. But it's recommended to find/make a micro-usb cable with the power wire (red usually) cut for this. Also useful for  serial debugging. The D1-Mini ESP8266 might have circuitry to handle both external and USB power, but it's always good to be on the safe side.
 
 ### Requirements
 
@@ -124,4 +122,13 @@ In `mblinds_fw.ino`, you need to update some main definitions/declarations, arou
     - Set your wifi ssid/password here
 
 
-### 
+## 6. Assembly
+
+### Spool
+The replacement spool/coupler is printed in 3 pieces, and needs to be superglued together.
+  ![wiring](moto-tilt-blinds-assm-spoolglue.png)
+<p style="text-align: center;">Fig 6.a:  Apply superglue to the green shaded areas and push pieces together </p>
+
+![wiring](moto-tilt-blinds-assm-spoolglue2.png)
+<p style="text-align: center;">Fig 6.b:  Assembled/glued spool </p>
+

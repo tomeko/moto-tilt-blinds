@@ -14,7 +14,7 @@ const int MAGIC = 0x0B00B135; // see if eeprom written already, write defaults i
 #define EXT_BTN_TOGGLE D4
 
 // other defs
-#define RPM 75
+
 #define PWM_CNTS  1023
 #define NUM_PRESETS             4
 #define DEFAULT_PORT 80

@@ -8,7 +8,7 @@
 #include <ESP_EEPROM.h>
 #include "mblinds_fw.h"
 
-// *************** SET/CHANGE MAIN VARS HERE **************** //
+// *************** UPDATE MAIN VARS HERE **************** //
 
 // SET YOUR MOTOR RPM
 #define RPM 75
