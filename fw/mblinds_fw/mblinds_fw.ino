@@ -6,15 +6,29 @@
 #include <MPU6050_light.h>
 #include <elapsedMillis.h>
 #include <ESP_EEPROM.h>
-#include <ArduinoOTA.h>
 #include "mblinds_fw.h"
 
-// SET HOSTNAME, IMPORTANT IF USING MULTIPLE DEVICES
+// *************** SET/CHANGE MAIN VARS HERE **************** //
+
+// SET YOUR MOTOR RPM
+#define RPM 75
+
+// comment this out if you don't want to use AndroidOTA for whatever reason
+#define USA_OTA
+
+// set hostname
 const char* HOSTNAME = "mblinds1";
 
-// set the below for specific network
+// set the wifi ssid/password
 const char* SSID = "ssid";
 const char* PASSWORD = "pw";
+
+// ********************************************************** //
+
+
+#ifdef USE_OTA
+#include <ArduinoOTA.h>
+#endif
 
 // default settings
 const settings_t default_settings =
@@ -68,9 +82,12 @@ void setup()
 
 	server_init();
 
+#ifdef USE_OTA
 	sprintf(&buftx[0],"%s-ota", HOSTNAME);	
 	ArduinoOTA.setHostname(buftx);	// appending '-ota' to hostname for ArduinoOTA host
 	ArduinoOTA.begin();
+#endif
+
 }
 
 // loads settings, from "eeprom"
@@ -103,8 +120,10 @@ void load_settings()
 void loop()
 {
 
+#ifdef USE_OTA
 	ArduinoOTA.handle();
-	
+#endif
+
 	// update angle
 	if (mpupdate_ms % MPU_UPDATEMS == 0)
 		mpu_update();
@@ -205,7 +224,6 @@ void server_init()
       SSDP.schema(server.client());
     });
 
-    //server.sendHeader("Access-Control-Allow-Origin", "*");
     server.enableCORS(true);
 
     server.begin();
