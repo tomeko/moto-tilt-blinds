@@ -143,7 +143,7 @@ The replacement spool/coupler is printed in 3 pieces, and needs to be superglued
   4. Pull the entire assembly out, and take it to a work area.
 
 ### 6.4 Remove existing tilt mechanism and replace old spool
-  1. Note the placement of the tilt-gear mechanism (1.a.4). It's usually on the left side. To free it we need to pull out the main drive shaft (1.a.3). Pull the main drive shaft (from the right side in this case), enough so that it comes out of the tilt-gear mechanism. There might be a small rubber washer on the main drive shaft you have to remove first.
+  1. Note the placement of the tilt-gear mechanism (1.4). It's usually on the left side. To free it we need to pull out the main drive shaft (1.a.3). Pull the main drive shaft (from the right side in this case), enough so that it comes out of the tilt-gear mechanism. There might be a small rubber washer on the main drive shaft you have to remove first.
 
  <p align="center"><img src="moto-tilt-blinds-pullshaft.png"><br>Fig 6.4.1:  Pulling out the shaft to free the tilt-gear mechanism</p>
 
