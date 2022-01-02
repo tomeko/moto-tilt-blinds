@@ -64,8 +64,8 @@ Parts #1-5 listed below are required. The rest (like hookup wire, etc) you may h
   1. Spool (1/3) Motor shaft coupler side
   2. Spool (2/3) Side 1
   3. Spool (3/3) Side 2, gear-tilt shaft coupler side
-  4. DY521 case (1/2): Body
-  5. DY521 case (2/2): Cover
+  4. Tilt Sensor DY-521 case (1/2): Body
+  5. Tilt Sensor DY-521 case (2/2): Cover
   6. Button case (1/3): Body
   7. Button case (2/3): Button press top
   8. Button case (3/3): Cover
