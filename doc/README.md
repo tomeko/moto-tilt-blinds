@@ -4,7 +4,7 @@
 <p align="center"><img src="moto-blinds-overview0.png"><br>Fig 1:  Existing horizontal slat blinds overview (cords/strings not pictured)</p>
 
  1.  Front cover shroud
-     - Usually a decorative cover made of plastic attached using clips.
+     - Usually a decorative cover made of plastic or wood attached using clips.
  2.  Metal housing
      - This is where the controller box attaches (in the front, between the front cover shroud (1) and housing (2))
  3.  Main drive shaft
