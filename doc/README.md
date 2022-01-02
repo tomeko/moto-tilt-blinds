@@ -135,9 +135,9 @@ The replacement spool/coupler is printed in 3 pieces, and needs to be superglued
 
 ### 6.3 Remove miniblinds
   1. Before starting:
-    - Tilt the blinds to a horizontal position
-    - Pull up the blinds halfway, lock them in place. This helps when taking them off and moving them to a work area.
-    - Remove the knobs at the end of the tilt cords. These are usually kept in place by a knot on one end, just untie that knot and set the knobs aside.
+     - Tilt the blinds to a horizontal position
+     - Pull up the blinds halfway, lock them in place. This helps when taking them off and moving them to a work area.
+     - Remove the knobs at the end of the tilt cords. These are usually kept in place by a knot on one end, just untie that knot and set the knobs aside.
   2. First, remove the front cover shroud. It's held in place by plastic clips that clip in from the top. So grab the shroud with two hands, and carefully slide it up until the clips unlatch. Set aside.
   3. The blinds assembly is usually mounted with metal brackets attached to the wall. On each bracket (left and right), there should be a front piece (facing you) that folds up and down locking the housing in place. You may need to use a screwdriver to pop them up. Once these are both popped up, you should be able to slide them straight out (towards you).
   4. Pull the entire assembly out, and take it to a work area.
@@ -150,11 +150,11 @@ The replacement spool/coupler is printed in 3 pieces, and needs to be superglued
   2. The tilt-gear mechanism is set in place from a rectangular plastic piece on the bottom. You should be able to just pop it off. Once removed, pull the cord out through the housing.
 
   3. Prepare the replacement tilt-gear mechanism
-    - Remove the existing spool (which will have a winded cord) by pulling it off.
-    - Here you can either use the cord that came with the new tilt-gear mechanism, or use the original cord. Either way, remove/unwind the cord from whichever spool you choose. We're going to wind up this cord to our new spool/coupler.
+     - Remove the existing spool (which will have a winded cord) by pulling it off.
+     - Here you can either use the cord that came with the new tilt-gear mechanism, or use the original cord. Either way, remove/unwind the cord from whichever spool you choose. We're going to wind up this cord to our new spool/coupler.
   4. Wind the cord on the new spool/coupler.
-    - Fold the new cord in half to make two equal length sides.
-    - At the loop-end of the cord, make a simple overhand loop knot. Pull each loose end through the two small holes on the new spool/coupler. See figure below for example.
+     - Fold the new cord in half to make two equal length sides.
+     - At the loop-end of the cord, make a simple overhand loop knot. Pull each loose end through the two small holes on the new spool/coupler. See figure below for example.
 
  <p align="center"><img src="moto-tilt-blinds-newspool-cord1.png"><br>Fig 6.4.2:  Threading the cord through the new spool/coupler</p>
 
