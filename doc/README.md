@@ -1,7 +1,7 @@
 ## 1. Horizontal Slat Blinds Overview
 
 
-<p align="center"><img src="moto-blinds-overview0.png"><br>Fig 1.a:  Existing horizontal slat blinds overview (cords/strings not pictured)</p>
+<p align="center"><img src="moto-blinds-overview0.png"><br>Fig 1:  Existing horizontal slat blinds overview (cords/strings not pictured)</p>
 
  1.  Front cover shroud
      - Usually a decorative cover made of plastic attached using clips.
@@ -16,10 +16,10 @@
 
 ### `moto-tilt-blinds` design concept
 
-  - One way to approach this would be a worm-gear motor driving the main drive shaft (1.a.3) directly, and removing the tilt-gear mechanism entirely. But that disables manual control as the worm-gear motor is not back-driveable.
-  - A small geared motor is placed inline to rotate the cord spool (1.a.5)
-  - There is limited space between the metal housing (1.a.2) and front cover shroud (1.a.1) with the required motor orientation, so creating a shaft coupler between the motor and tilt-gear mechanism (1.a.4) isn't practical.
-  - Therefore, the spool that came with the tilt-gear mechanism (1.a.5) is removed, and we 3D print a custom spool with a built in coupler designed for both the motor shaft and the tilt-gear mechanism shaft.
+  - One way to approach this would be a worm-gear motor driving the main drive shaft (fig 1.3) directly, and removing the tilt-gear mechanism entirely. But that disables manual control as the worm-gear motor is not back-driveable.
+  - A small geared motor is placed inline to rotate the cord spool (fig 1.5)
+  - There is limited space between the metal housing (fig 1.2) and front cover shroud (fig 1.1) with the required motor orientation, so creating a shaft coupler between the motor and tilt-gear mechanism (fig 1.4) isn't practical.
+  - Therefore, the spool that came with the tilt-gear mechanism (fig 1.5) is removed, and we 3D print a custom spool with a built in coupler designed for both the motor shaft and the tilt-gear mechanism shaft.
 
 ## 2. BOM
 
@@ -53,13 +53,13 @@ Parts #1-5 listed below are required. The rest (like hookup wire, etc) you may h
 
   - Because the ESP8266 will be externally powered, it might be a good idea to find/make a micro-usb cable with no power for the initial firmware flash (if you've already wired everything up). You can do this by carefully splicing a micro-usb and cutting the (usually) red wire. The D1-Mini ESP8266 might have circuitry to handle this, but it's always good to be on the safe side.
 
-  - Drilling into the metal front cover shroud (1.a.1) is probably the most difficult part of this installation. If you don't already have a center punch I highly recommend investing in one ([even a cheap $5 one](https://www.harborfreight.com/spring-loaded-center-punch-621.html))
+  - Drilling into the metal front cover shroud (fig 1.1) is probably the most difficult part of this installation. If you don't already have a center punch I highly recommend investing in one ([even a cheap $5 one](https://www.harborfreight.com/spring-loaded-center-punch-621.html))
 
   ## 3. 3d-printed parts
 
   All parts to 3d print are illustrated and described below, and the files are found in the `/stl` folder in this repo. I used an Ender3 Pro with a pretty stock/typical setup (0.4mm nozzle, 1.75mm PLA). 
 
-<p align="center"><img src="moto-tilt-blinds-3dprint_parts.png"><br>Fig 2.a:  3d printed parts</p>
+<p align="center"><img src="moto-tilt-blinds-3dprint_parts.png"><br>Fig 2:  3d printed parts</p>
 
   1. Spool (1/3) Motor shaft coupler side
   2. Spool (2/3) Side 1
@@ -69,8 +69,8 @@ Parts #1-5 listed below are required. The rest (like hookup wire, etc) you may h
   6. Button case (1/3): Body
   7. Button case (2/3): Button press top
   8. Button case (3/3): Cover
-  9. Controller case: Built in motor mount, mounting holes, wire cutout. Note: there is no top here (not really needed) as it will be covered by the front cover shroud (1.a.1)
-  10. Controller case spacer: The case isn't able to fit flush with the metal housing (1.a.2) so these spacers are used with the 2 M3 mounting bolts when attaching to the housing.
+  9. Controller case: Built in motor mount, mounting holes, wire cutout. Note: there is no top here (not really needed) as it will be covered by the front cover shroud (fig 1.1)
+  10. Controller case spacer: The case isn't able to fit flush with the metal housing (fig 1.2) so these spacers are used with the 2 M3 mounting bolts when attaching to the housing.
 
   - Parts 6-8 are optional. Print these if you want the manual single push button to toggle/move between presets (e.g. open/close blinds)
   - Parts 1 and 3 should be printed with 100% infill, as the shaft couplers need the added strength. (I used Cura's "Standard Quality", and set infill to 100%)
@@ -79,7 +79,7 @@ Parts #1-5 listed below are required. The rest (like hookup wire, etc) you may h
 
   ## 4. Wiring
 
-<p align="center"><img src="motoblinds-hookup.png"><br>Fig 4.a:  Wiring diagram</p>
+<p align="center"><img src="motoblinds-hookup.png"><br>Fig 4:  Wiring diagram</p>
 
 Notes:
   - Wiring between the ESP8266 and the motor driver should be short, as the ESP8266 and motor driver will be sandwiched on top of each other (insulated by thermal or electrical tape, BOM 2.10)
@@ -121,10 +121,79 @@ In `mblinds_fw.ino`, you need to update some main definitions/declarations, arou
 
 ## 6. Assembly
 
-### Spool
+### 6.1 Assemble new spool/coupler
 The replacement spool/coupler is printed in 3 pieces, and needs to be superglued together.
-  <p align="center"><img src="moto-tilt-blinds-assm-spoolglue.png"><br>Fig 6.a:  Apply superglue to the green shaded areas and push pieces together</p>
+  <p align="center"><img src="moto-tilt-blinds-assm-spoolglue.png"><br>Fig 6.1.1:  Apply superglue to the green shaded areas and push pieces together</p>
 
- <p align="center"><img src="moto-tilt-blinds-assm-spoolglue2.png"><br>Fig 6.b:  Assembled/glued spool</p>
+ <p align="center"><img src="moto-tilt-blinds-assm-spoolglue2.png"><br>Fig 6.1.2:  Assembled/glued spool</p>
 
-## TODO: finish
+
+### 6.2 Assemble controller
+
+
+*(todo/coming soon)*
+
+### 6.3 Remove miniblinds
+  1. Before starting:
+    - Tilt the blinds to a horizontal position
+    - Pull up the blinds halfway, lock them in place. This helps when taking them off and moving them to a work area.
+    - Remove the knobs at the end of the tilt cords. These are usually kept in place by a knot on one end, just untie that knot and set the knobs aside.
+  2. First, remove the front cover shroud. It's held in place by plastic clips that clip in from the top. So grab the shroud with two hands, and carefully slide it up until the clips unlatch. Set aside.
+  3. The blinds assembly is usually mounted with metal brackets attached to the wall. On each bracket (left and right), there should be a front piece (facing you) that folds up and down locking the housing in place. You may need to use a screwdriver to pop them up. Once these are both popped up, you should be able to slide them straight out (towards you).
+  4. Pull the entire assembly out, and take it to a work area.
+
+### 6.4 Remove existing tilt mechanism and replace old spool
+  1. Note the placement of the tilt-gear mechanism (1.a.4). It's usually on the left side. To free it we need to pull out the main drive shaft (1.a.3). Pull the main drive shaft (from the right side in this case), enough so that it comes out of the tilt-gear mechanism. There might be a small rubber washer on the main drive shaft you have to remove first.
+
+ <p align="center"><img src="moto-tilt-blinds-pullshaft.png"><br>Fig 6.4.1:  Pulling out the shaft to free the tilt-gear mechanism</p>
+
+  2. The tilt-gear mechanism is set in place from a rectangular plastic piece on the bottom. You should be able to just pop it off. Once removed, pull the cord out through the housing.
+
+  3. Prepare the replacement tilt-gear mechanism
+    - Remove the existing spool (which will have a winded cord) by pulling it off.
+    - Here you can either use the cord that came with the new tilt-gear mechanism, or use the original cord. Either way, remove/unwind the cord from whichever spool you choose. We're going to wind up this cord to our new spool/coupler.
+  4. Wind the cord on the new spool/coupler.
+    - Fold the new cord in half to make two equal length sides.
+    - At the loop-end of the cord, make a simple overhand loop knot. Pull each loose end through the two small holes on the new spool/coupler. See figure below for example.
+
+ <p align="center"><img src="moto-tilt-blinds-newspool-cord1.png"><br>Fig 6.4.2:  Threading the cord through the new spool/coupler</p>
+
+   - Wind each side one at a time in opposite directions five times. Try to keep each winding on one side if possible. You don't want the winding to end up being tangled, so take your time here and try a few times if necessary. At the end, you should be able to hold the spool in the middle, and pull each side to make the spool turn easily. See figure below for illustration on the opposite winding directions.
+
+  <p align="center"><img src="moto-tilt-blinds-newspool-cord2.png"><br>Fig 6.4.3:  Winding the cord. Wind one side 5 times, then the other side 5 times in the oppoosite direction</p>
+
+5. After the cord is wound on the spool, install the spool on the new tilt-gear mechanism, by pushing the shaft into the shaft-end coupler with the motor-coupler end sticking out (see figure below for orientation). Also, thread the two cords through the holes on the bottom square plate of the tilt-gear mechanism (this bottom square plate can be swiveled up/down to help)
+
+
+ <p align="center"><img src="moto-tilt-blinds-newtiltspool.png"><br>Fig 6.4.4: Spool/coupler installed on new tilt-gear mechanism (cords not shown)</p>
+
+6. Install the new tilt-gear and spool mechanism
+  - First you'll need to pull the cords through the bottom hole of the housing
+  - Position the new assembly back into it's correct place. The bottom square plate of the tilt-gear mechanism should line-up/snap to the rectangular hole on the housing.
+  - Slide the main drive shaft back through the tilt-gear mechanism. If you had the rubber washer on the main drive shaft, put it back on.
+
+
+
+### 6.5 Mount controller
+
+*(todo/coming soon)*
+
+### 6.6 Mount tilt-sensor and optional button
+
+*(todo/coming soon)*
+
+
+## 7. Operation
+
+*(todo/coming soon)*
+
+### 7.1 Web and REST interface
+
+*(todo/coming soon)*
+### 7.2 Position calibration
+
+*(todo/coming soon)*
+
+
+
+
