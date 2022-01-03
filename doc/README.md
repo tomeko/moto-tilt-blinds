@@ -14,9 +14,9 @@
 - [7. Operation](#7-operation)
   * [7.1 Web Interface](#71-web-interface)
   * [7.2 REST Interface](#72-rest-interface)
-    + [7.2.1 Endpoint: `/motor` Type: `GET`](#721-endpoint----motor--type---get-)
-    + [7.2.2 Endpoint: `/settings` Type: `GET`](#722-endpoint----settings--type---get-)
-    + [7.2.3 Endpoint `/motorgo` Type: `GET`](#723-endpoint---motorgo--type---get-)
+    + [7.2.1 Motor status](#721-motor-status)
+    + [7.2.2 Settings](#722-settings)
+    + [7.2.3 Motor Go](#723-motor-go)
 
 <small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
 
@@ -240,7 +240,9 @@ To customize the web interface:
 
 ### 7.2 REST Interface
 
-#### 7.2.1 Endpoint: `/motor` Type: `GET`
+#### 7.2.1 Motor status
+
+Endpoint: `/motor` Type: `GET`
 
 Description:
 
@@ -256,7 +258,9 @@ Data:
     "ip": "192.168.1.69"
 }
 ```
-#### 7.2.2 Endpoint: `/settings` Type: `GET`
+#### 7.2.2 Settings
+
+Endpoint: `/settings` Type: `GET`
 
 Description:
 
@@ -289,7 +293,9 @@ With no parameters the server will send: (example)
 }
 ```
 
-#### 7.2.3 Endpoint `/motorgo` Type: `GET`
+#### 7.2.3 Motor Go
+
+Endpoint `/motorgo` Type: `GET`
 
 Description:
 
