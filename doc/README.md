@@ -1,3 +1,26 @@
+- [1. Horizontal Slat Blinds Overview](#1-horizontal-slat-blinds-overview)
+- [2. BOM](#2-bom)
+- [3. 3d-printed parts](#3-3d-printed-parts)
+- [4. Wiring](#4-wiring)
+- [5. Firmware](#5-firmware)
+  * [5.1 Libraries, etc.](#51-libraries--etc)
+- [6. Assembly](#6-assembly)
+  * [6.1 Assemble new spool/coupler](#61-assemble-new-spool-coupler)
+  * [6.2 Assemble controller](#62-assemble-controller)
+  * [6.3 Remove miniblinds](#63-remove-miniblinds)
+  * [6.4 Remove existing tilt mechanism and replace old spool](#64-remove-existing-tilt-mechanism-and-replace-old-spool)
+  * [6.5 Mount controller](#65-mount-controller)
+  * [6.6 Mount tilt-sensor and optional button](#66-mount-tilt-sensor-and-optional-button)
+- [7. Operation](#7-operation)
+  * [7.1 Web Interface](#71-web-interface)
+  * [7.2 REST Interface](#72-rest-interface)
+    + [7.2.1 Endpoint: `/motor` Type: `GET`](#721-endpoint----motor--type---get-)
+    + [7.2.2 Endpoint: `/settings` Type: `GET`](#722-endpoint----settings--type---get-)
+    + [7.2.3 Endpoint `/motorgo` Type: `GET`](#723-endpoint---motorgo--type---get-)
+
+<small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
+
+
 ## 1. Horizontal Slat Blinds Overview
 
 
@@ -14,7 +37,7 @@
      - Cord wrapped around this, connected to shaft of the tilt-gear mechanism (4)
 
 
-### `moto-tilt-blinds` design concept
+`moto-tilt-blinds` design concept
 
   - One way to approach this would be a worm-gear motor driving the main drive shaft (fig 1.3) directly, and removing the tilt-gear mechanism entirely. But that disables manual control as the worm-gear motor is not back-driveable.
   - A small geared motor is placed inline to rotate the cord spool (fig 1.5)
@@ -49,7 +72,7 @@ Parts #1-5 listed below are required. The rest (like hookup wire, etc) you may h
   <li>Can use any USB wall plug or 5V adapter >500mA, just splice it</li>
 </ol>
 
-### Other
+*Notes*
 
   - Because the ESP8266 will be externally powered, it might be a good idea to find/make a micro-usb cable with no power for the initial firmware flash (if you've already wired everything up). You can do this by carefully splicing a micro-usb and cutting the (usually) red wire. The D1-Mini ESP8266 might have circuitry to handle this, but it's always good to be on the safe side.
 
@@ -91,7 +114,7 @@ Notes:
 
 NOTE: For the initial firmware flash, you might be able to get away with flashing before wiring everything up. But it's recommended to find/make a micro-usb cable with the power wire (red usually) cut for this. Also useful for  serial debugging. The D1-Mini ESP8266 might have circuitry to handle both external and USB power, but it's always good to be on the safe side.
 
-### Requirements
+### 5.1 Libraries, etc.
 
 
 Make sure you have all of the below installed.
@@ -130,8 +153,7 @@ The replacement spool/coupler is printed in 3 pieces, and needs to be superglued
 
 ### 6.2 Assemble controller
 
-
-*(todo/coming soon)*
+***(todo/coming soon)***
 
 ### 6.3 Remove miniblinds
   1. Before starting:
@@ -185,14 +207,101 @@ The replacement spool/coupler is printed in 3 pieces, and needs to be superglued
 
 ## 7. Operation
 
-*(todo/coming soon)*
+The firmware has 4 built in presets (or angles). When the device is told to go to a preset, it uses input from the tilt-sensor and moves until it reaches it (within a threshold). Stall detection is accomplished with a simple timeout.
 
-### 7.1 Web and REST interface
+Built in presets:
 
-*(todo/coming soon)*
-### 7.2 Position calibration
+  1. `up`: default 45&deg;
+  2. `mid`: default 0&deg;
+  3. `down`: default -45&deg;
+  4. `btn`:<sup>1</sup>: default -45&deg; 
 
-*(todo/coming soon)*
+<sup>1</sup> If the manual button is installed, it uses a separate preset for angle when button pressed and considers "open" to be 0&deg;. Now that I'm writing this, this seems a bit convolouted and should be changed.
+
+In addition to the built-in presets, there are 4 additional custom presets available to be stored and used. (See 7.2 REST Interface)
+
+### 7.1 Web Interface
+To enter the web interface, open up a browser to the hostname or IP<sup>1</sup> set in the firware. Example: `http://mdblinds1/`
+
+The current web interface is very bare-bones. Functionality:
+
+  - Show the miniblinds state on page load
+  - Two buttons for open(mid preset)/close(up preset). After clicking one, the page reloads in ~5s to display updated status.
+
+<img src="../doc/mobile-ui-ss0.png" height="260">
+
+To customize the web interface:
+  - Edit `fw/home.full.html`, then [minify it](https://www.willpeavy.com/tools/minifier/)
+  - Edit the `html` string variable (last line in `fw/mblinds_fw/mblinds_fw.h`) with the updated content
+  - Note: You'll need to escape any double quotes in the HTML source
+  - Re-flash (OTA or via serial/usb)
+
+*<sup>1</sup>For now SSDP discover functionality not implemented client-side (only SSDP broadcast), so you'll have to find the IP if you have DNS issues.*
+
+### 7.2 REST Interface
+
+#### 7.2.1 Endpoint: `/motor` Type: `GET`
+
+Description:
+
+  - Returns info on the motor status and controller.
+
+Data:
+```json
+{
+    "angle": 72.772552490234375,
+    "status": "IDLE",
+    "pos": "up",
+    "id": "mblinds1",
+    "ip": "192.168.1.69"
+}
+```
+#### 7.2.2 Endpoint: `/settings` Type: `GET`
+
+Description:
+
+  - Gets or sets current settings. With no parameters, it will respond with the current settings. See 7.3 Position Calibration for details how to set position presets.
+  
+| Parameter | Type  | Description |
+|--|--|--|
+| `up` | `none` | Sets the up preset to the current angle |
+| `mid` | `none` | Sets the mid preset (blinds horizontal) to the current angle |
+| `down` | `none` | Sets the down preset to the current angle |
+| `btn` | `none` | Sets the preset when button pressed at current angle |
+| `preset` | `int` | Sets preset 1-4 to the current angle |
+| `speed` | `float` | Sets the speed of motor, default 1.0 |
+| `dir` | `int` | Flip the motor movement direction, default 1. Set to -1 to reverse |
+| `reset` | `none` | Reset all settings to default |
+
+Data:
+
+With no parameters the server will send: (example)
+```json
+{
+    "down": -70.248176574707031,
+    "mid": 0,
+    "up": 73.297157287597656,
+    "btn": 72.280120849609375,
+    "tolerance": 1.5,
+    "speed": 1,
+    "dir": -1,
+    "stallangledx": 1
+}
+```
+
+#### 7.2.3 Endpoint `/motorgo` Type: `GET`
+
+Description:
+
+Goes to one of three built-in orientations (up,mid,down) or one of the custom preset orientations
+
+| Parameter | Type  | Description |
+|--|--|--|
+| `oren` | `int` | up=1, mid=0, down=-1 |
+| `preset` | `int` | goes to one of the custom user-defined presets (1-4) |
+
+
+
 
 
 

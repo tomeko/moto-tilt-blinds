@@ -283,6 +283,17 @@ void srv_settings()
 				settings.dir = dir;
 		}
 	}
+	else if (server.hasArg(strPreset))
+	{
+		if (server.arg(strPreset) != "")
+		{
+			int num = server.arg(strPreset).toInt();
+			if (num > 0 && num <= NUM_PRESETS)
+				settings.angle_presets[num] = angle_curr;
+			else
+				resp["result"] = RESP_ERROR;
+		}
+	}
 	else if (server.hasArg("reset"))
 	{
 		EEPROM.wipe();
