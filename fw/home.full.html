@@ -24,16 +24,51 @@
 			display:block;
             margin-top: 15px;
 		}
+
+        .btn2
+        {
+            width: 33%;
+            display: inline-block;
+        }
+
+        .b1 {
+            text-align:left;
+            display:inline-block;
+            width:320px;
+            padding:5px
+        }
+        .b2 {
+            font-size: 0.8em;
+        }
+        .center
+        {
+            text-align: center;
+        }
     </style>
 
 </head>
 <body>
-    <div style='text-align:left;display:inline-block;width:320px;padding:5px'>
+    <div class='b1'>
         <p id='id'>ID: </p>
         <p id='st'>STATE: </p>
             <button id='bo' onclick="go(this,'0')">&#x263C; Open</button>
             <button id='bc' onclick="go(this,'1')">&#x2600; Close</button>
     </div>
+    <p>
+        <div class='b1 b2'>
+            <p id="s_ang">Angle: </p>
+            <p id="s_dir">Dir: </p>
+            <p class="center">
+                <button class="btn2 b2" onclick="conf(this,'toggledir')">ToggleDir</button>
+                <button class="btn2 b2" onclick="conf(this,'/motogo?moverel=5')">Move +5&#176;</button>
+                <button class="btn2 b2" onclick="conf(this,'up')">SetUp</button>
+                <button class="btn2 b2" onclick="conf(this,'mid')">SetMid</button>
+                <button class="btn2 b2" onclick="conf(this,'down')">SetDown</button>
+                <button class="btn2 b2" onclick="conf(this,'btn')">SetBtn</button>
+                <button class="btn2 b2" onclick="conf(this,'reset')">Reset</button>
+            </p>
+        </div>
+    </p>  
 
     <script>
         function g(i){return document.getElementById(i);};
@@ -48,6 +83,16 @@
             o.style.backgroundColor='#ccc';
             setTimeout(function(){o.disabled=false; o.style.backgroundColor='#1fa3ec'; location.reload();},5000);
         }
+        function conf(b,cmd)
+        {
+            var t = cmd[0] == '/' ? "" : "settings?";
+            if (confirm(b.innerHTML + "?"))
+            {
+                fetch(t + cmd);
+                setTimeout(function(){location.reload();},1000);
+            }
+        }
+
         window.addEventListener('load', function() {
             fetch('/motor')
             .then((response) => {
@@ -59,6 +104,8 @@
                 var p=data['pos'];
                 var ps=p[0]=='u'||p[0]=='d'?'closed':'open';
                 s('st', ps);
+                s('s_ang', parseFloat(data['angle']).toFixed(1).toString());
+                s('s_dir', data['dir']);
             });
         })
     </script>

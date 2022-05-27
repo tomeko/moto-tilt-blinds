@@ -1,6 +1,9 @@
 #include <ESP8266WiFi.h>
 #include <ESP8266WebServer.h>
 #include <ESP8266SSDP.h>
+#include <ArduinoOTA.h>
+#include <ESP8266mDNS.h>
+#include <WiFiUdp.h>
 #include <Arduino_JSON.h>
 #include <Wire.h>
 #include <MPU6050_light.h>
@@ -8,13 +11,7 @@
 #include <ESP_EEPROM.h>
 #include "mblinds_fw.h"
 
-// *************** UPDATE MAIN VARS HERE **************** //
-
-// SET YOUR MOTOR RPM
-#define RPM 75
-
-// comment this out if you don't want to use AndroidOTA for whatever reason
-#define USA_OTA
+// *************** UPDATE HOSTNAME/WIFI HERE **************** //
 
 // set hostname
 const char* HOSTNAME = "mblinds1";
@@ -25,11 +22,6 @@ const char* PASSWORD = "pw";
 
 // ********************************************************** //
 
-
-#ifdef USE_OTA
-#include <ArduinoOTA.h>
-#endif
-
 // default settings
 const settings_t default_settings =
 {
@@ -39,8 +31,8 @@ const settings_t default_settings =
 	.angle_btntoggle = DEFAULT_TILT_ANGLE,
 	.angle_tolerance = DEFAULT_ANGLE_TOLERANCE,
 	.speed = DEFAULT_MOTORSPEED,
-	.stallcheck_angledx = DEFAULT_MOTORSTALLCHECK_DX_ANGLE,
 	.dir = 1,
+	.stallcheck_ms = DEFAULT_MOTOR_STALLCHECK_MS,
 	.angle_presets = { NULL_ANGLE, NULL_ANGLE, NULL_ANGLE, NULL_ANGLE }
 };
 
@@ -81,13 +73,6 @@ void setup()
 	wifi_init();
 
 	server_init();
-
-#ifdef USE_OTA
-	sprintf(&buftx[0],"%s-ota", HOSTNAME);	
-	ArduinoOTA.setHostname(buftx);	// appending '-ota' to hostname for ArduinoOTA host
-	ArduinoOTA.begin();
-#endif
-
 }
 
 // loads settings, from "eeprom"
@@ -120,9 +105,7 @@ void load_settings()
 void loop()
 {
 
-#ifdef USE_OTA
 	ArduinoOTA.handle();
-#endif
 
 	// update angle
 	if (mpupdate_ms % MPU_UPDATEMS == 0)
@@ -173,7 +156,7 @@ void motor_stop()
 // for now, stall check is a simple timeout
 void motor_checkstall()
 {
-	if (motor_ms % MOTORMOVE_TIMEO_MS == 0)
+	if (motor_ms % settings.stallcheck_ms == 0)
 		motor_stop();
 }
 
@@ -242,6 +225,10 @@ void server_init()
 	
 	sprintf(&buftx[0], "Server listening on port %d", DEFAULT_PORT);
 	Serial.println(buftx);
+
+	sprintf(&buftx[0],"%s-ota", HOSTNAME);	
+	ArduinoOTA.setHostname(buftx);	// appending '-ota' to hostname for ArduinoOTA host
+	ArduinoOTA.begin();
 }
 
 // get or set settings, endpoint /settings
@@ -270,10 +257,6 @@ void srv_settings()
 			settings.speed = abs(server.arg(strSpeed).toFloat());
 		else
 			resp["result"] = RESP_ERROR;
-	} else if (server.hasArg(strStallCheckAngle_dx))
-	{
-		if (server.arg(strStallCheckAngle_dx) != "")
-			settings.stallcheck_angledx = abs(server.arg(strStallCheckAngle_dx).toFloat());
 	} else if (server.hasArg(strDir))
 	{
 		if (server.arg(strDir) != "")
@@ -294,6 +277,17 @@ void srv_settings()
 				resp["result"] = RESP_ERROR;
 		}
 	}
+	else if (server.hasArg(strToggleDir))
+	{
+		settings.dir *= -1;
+	}
+	else if (server.hasArg(strStallCheck_ms))
+	{
+		if (server.arg(strStallCheck_ms) != "")
+			settings.stallcheck_ms = server.arg(strStallCheck_ms).toInt();
+		else
+			resp["result"] = RESP_ERROR;
+	}
 	else if (server.hasArg("reset"))
 	{
 		EEPROM.wipe();
@@ -309,7 +303,7 @@ void srv_settings()
 		resp[strTolerance] = settings.angle_tolerance;
 		resp[strSpeed] = settings.speed;
 		resp[strDir] = settings.dir;
-		resp[strStallCheckAngle_dx] = settings.stallcheck_angledx;
+		resp[strStallCheck_ms] = settings.stallcheck_ms;
 		save = false;
 	}
 
@@ -354,6 +348,15 @@ void srv_motor_go()
 			motor_go(settings.angle_presets[pidx]);
 		}
 	}
+	else if (server.hasArg(strMoverel))
+	{
+		if (server.arg(strMoverel) != "")
+		{
+			int rangle = server.arg(strMoverel).toInt();
+			if (rangle >= -90 && rangle <= 90)
+				motor_go(angle_curr + rangle);
+		}
+	}
 	else
 	{
 		resp[RESP_RESULT] = RESP_ERROR;
@@ -376,6 +379,7 @@ void srv_motor_query()
 	String angle_curr_str = angle_curr < settings.angle_mid - 5 ? strDown : angle_curr > settings.angle_mid + 5 ? strUp : strMid;
 	resp["pos"] = angle_curr_str;
 	resp["id"] = HOSTNAME;
+	resp["dir"] = settings.dir;
 	resp["ip"] = WiFi.localIP().toString();
 
 	if (status == STATUS_MOVING)
