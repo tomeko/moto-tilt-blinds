@@ -59,23 +59,24 @@
             <p id="s_ang">Angle: </p>
             <p id="s_dir">Dir: </p>
             <p class="center">
-                <button class="btn2 b2" onclick="conf(this,'toggledir')">ToggleDir</button>
-                <button class="btn2 b2" onclick="conf(this,'/motogo?moverel=5')">Move +5&#176;</button>
-                <button class="btn2 b2" onclick="conf(this,'up')">SetUp</button>
-                <button class="btn2 b2" onclick="conf(this,'mid')">SetMid</button>
-                <button class="btn2 b2" onclick="conf(this,'down')">SetDown</button>
-                <button class="btn2 b2" onclick="conf(this,'btn')">SetBtn</button>
-                <button class="btn2 b2" onclick="conf(this,'reset')">Reset</button>
+                <button class="btn2 b2" onclick="conf(this,0,'toggledir')">ToggleDir</button>
+                <button class="btn2 b2" onclick="conf(this,1,'motorgo?moverel=5')">Move +5&#176;</button>
+                <button class="btn2 b2" onclick="conf(this,0,'up')">SetUp</button>
+                <button class="btn2 b2" onclick="conf(this,0,'mid')">SetMid</button>
+                <button class="btn2 b2" onclick="conf(this,0,'down')">SetDown</button>
+                <button class="btn2 b2" onclick="conf(this,0,'btn')">SetBtn</button>
+                <button class="btn2 b2" onclick="conf(this,0,'reset')">Reset</button>
             </p>
         </div>
     </p>  
 
     <script>
+        var loc;
         function g(i){return document.getElementById(i);};
         function s(i,t) { g(i).innerHTML+=t;};
         function go(o,i) {
              d(o);
-             fetch('/motorgo?oren='+i);
+             fetch(loc + 'motorgo?oren='+i);
         };
         function d(o)
         {
@@ -83,18 +84,19 @@
             o.style.backgroundColor='#ccc';
             setTimeout(function(){o.disabled=false; o.style.backgroundColor='#1fa3ec'; location.reload();},5000);
         }
-        function conf(b,cmd)
+        function conf(b,t,cm)
         {
-            var t = cmd[0] == '/' ? "" : "settings?";
+            var cmd = t == '0' ? "settings?" + cm : cm;
             if (confirm(b.innerHTML + "?"))
             {
-                fetch(t + cmd);
+                fetch(loc + cmd);
                 setTimeout(function(){location.reload();},1000);
             }
         }
 
         window.addEventListener('load', function() {
-            fetch('/motor')
+            loc = window.location.href;
+            fetch(loc + 'motor')
             .then((response) => {
                 return response.json();
             }).then((data) => {
