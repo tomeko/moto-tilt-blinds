@@ -4,8 +4,11 @@
 Motorized tilt control for horizontal slat-style blinds over Wifi. There are quite a few similar projects & products out there but I couldn't find one that fit the requirements listed below:
 
 <div>
-<img src="https://user-images.githubusercontent.com/995615/146713471-8e8813d2-5823-4e75-b4cd-cd82f4d647de.gif" height="260">
-<img src="doc/mobile-ui-ss0.png" height="260">
+  <div style="float: left;">
+    <img src="https://user-images.githubusercontent.com/995615/146713471-8e8813d2-5823-4e75-b4cd-cd82f4d647de.gif" height="300px;" >
+    <img src="https://user-images.githubusercontent.com/995615/152669667-17b6f8e3-7c39-4410-b6e5-10d9f201b2f4.gif" height="300px;" style="vertical-align: center;">
+    <img src="doc/mobile-ui-ss0.png" height="300px;">
+  </div>
 </div>
 
 ### Features
