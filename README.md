@@ -21,7 +21,7 @@ I've used this configuration for about 6 months on large (2m) blinds and it's be
    - More parts to 3d print/assemble versus a direct-drive design
    - Since the replacement tilt-gear mechanism isn't needed, can use that cost for a better motor and driver (for large blinds)
   
-In the meantime I recommend to also check out this alternative project, [Motorized_MQTT_Blinds](https://github.com/thehookup/Motorized_MQTT_Blinds) which offers a direct-drive design and is non-destructive.
+In the meantime I recommend to consider this project: [Motorized_MQTT_Blinds](https://github.com/thehookup/Motorized_MQTT_Blinds) which offers a direct-drive design and is non-destructive.
 In the next revision here I'll most likely go with direct-drive as well and have options per blinds length-size: Small (1m or less) and large (2m), and focus more on ease of installation.
 
 
@@ -32,8 +32,8 @@ In the next revision here I'll most likely go with direct-drive as well and have
   - **Low cost:** About $20-$50 per installation <sup>2</sup> 
   - **Optional manual control button**
 
-<sup>1</sup>* This backdrives the motor, so there's some extra resistance*
-<sup>2</sup>* As of Dec'21, depending on where you source the parts and how many you build.*
+<p><sup>1</sup>This backdrives the motor, so there's some extra resistance</p>
+<p><sup>2</sup>As of Dec'21, depending on where you source the parts and how many you build.</p>
 
 
 ## Assembly/Installation
