@@ -11,14 +11,30 @@ Motorized tilt control for horizontal slat-style blinds over Wifi. There are qui
   </div>
 </div>
 
+
+### State of things
+I've used this configuration for about 6 months on large (2m) blinds and it's been working well for the most part, though I think a redesign is in order for these reasons:
+ - Had to replace the spool-shaft coupler twice because I overshot the closed position and it warped. That was a hassle.
+ - I'm re-evaluating the benefit of keeping the existing pull string control versus driving the tilt-shaft directly for these reasons:
+   - The accuracy of the controller mount holes is critical and they're not easy to drill out. For multiple installations this is a bit of work. 
+   - The pull string control does backdrive the motor, so persons unaware could apply excessive force.
+   - More parts to 3d print/assemble versus a direct-drive design
+   - Since the replacement tilt-gear mechanism isn't needed, can use that cost for a better motor and driver (for large blinds)
+  
+In the meantime I recommend to also check out this alternative project, [Motorized_MQTT_Blinds](https://github.com/thehookup/Motorized_MQTT_Blinds) which offers a direct-drive design and is non-destructive.
+In the next revision here I'll most likely go with direct-drive as well and have options per blinds length-size: Small (1m or less) and large (2m), and focus more on ease of installation.
+
+
 ### Features
-  - **Back-driveable**: Retain manual tilt control of your blinds with existing pull strings in case of power/internet outage.
-  - **Keep the stock look**: No clunky or visible parts after installation with no-show profile installation.
+  - **Retain pull-string configuration**: Retain manual tilt control of your blinds <sup>1</sup> 
+  - **Keep the stock look**: No-show profile installation.
   - **Built in control via ESP8266 web interface:** Android OTA updatable firmware, SSDP device discovery.
-  - **Low cost:** About $20-$50 per installation <sup>1</sup> 
+  - **Low cost:** About $20-$50 per installation <sup>2</sup> 
   - **Optional manual control button**
 
-<sup>1</sup>*As of Dec'21, depending on where you source the parts and how many you build.*
+<sup>1</sup>* This backdrives the motor, so there's some extra resistance*
+<sup>2</sup>* As of Dec'21, depending on where you source the parts and how many you build.*
+
 
 ## Assembly/Installation
 
