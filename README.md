@@ -1,4 +1,7 @@
 
+> :information_source: Note, this is an older/alternative implementation. The latest is in [the main branch](https://github.com/tomeko/moto-tilt-blinds) 
+
+
 ## Summary
 
 Motorized tilt control for horizontal slat-style blinds over Wifi. There are quite a few similar projects & products out there but I couldn't find one that fit the requirements listed below:
