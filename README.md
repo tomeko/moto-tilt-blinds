@@ -26,8 +26,6 @@ If you've never attempted a project like this, I highly recommend first checking
 
 <img src='doc/wiring.png' width=75%>
 
-> :information_source: Note: The older 'custom spool' implementation can be found in the [v0_customspool](https://github.com/tomeko/moto-tilt-blinds/tree/v0_customspool) branch. The documentation for this version is under construction
-
 ## Mounting
 
   - If not 3D printing, use the parts below. Measure the tilt shaft of your blinds. Mine is square 6.5mm, so 10mm works.
